@@ -147,6 +147,16 @@ sudo systemctl start wg-quick@wg0
 curl ifconfig.me  # AWS IP çıkmalı
 ```
 
+### **2.3. Sunucuya İstemci Tanıtma**
+İstemci tarafı işlemleri sonrası sunucuya istemcimizi tanıtmamız gerekir.
+AWS'de şunları yapmalısın;
+
+```bash
+sudo wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips 10.0.0.2/32
+sudo systemctl restart wg-quick@wg0
+```
+
+
 ---
 
 ## **3. Debugging ve Sorun Giderme**
