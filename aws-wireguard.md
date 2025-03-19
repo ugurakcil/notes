@@ -152,7 +152,7 @@ curl ifconfig.me  # AWS IP çıkmalı
 AWS'de şunları yapmalısın;
 
 ```bash
-sudo wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips 10.0.0.2/32
+sudo wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips CLIENT_ALLOWED_IP
 sudo systemctl restart wg-quick@wg0
 ```
 
@@ -178,6 +178,13 @@ sudo tcpdump -i NETWORK_INTERFACE udp port 51820
 
 ---
 
-## **Sonuç**
+## **Son**
+
+Alias ile hızlandırmak fena olmaz.
+```bash
+echo "alias vpn-up='sudo wg-quick up wg0'" >> ~/.bashrc
+echo "alias vpn-down='sudo wg-quick down wg0'" >> ~/.bashrc
+source ~/.bashrc
+```
 
 WireGuard AWS üzerinde kuruldu, istemciler bağlandı, doğru interface’ler tespit edildi, IP yerine domain kullanıldı, hata ayıklama yapıldı. **Trafik AWS üzerinden akıyorsa her şey tamam!** 🚀
